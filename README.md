@@ -11,26 +11,11 @@ A Discord bot that randomly selects Advent of Code challenges and automatically 
 
 ## Installation
 
-### Quick Setup on Ubuntu
-
-```bash
-cd /opt
-git clone https://github.com/dumben/WheelOfAdventOfCode.git adventbot
-cd adventbot
-```
-
 For full deployment instructions including systemd service setup, see [deployment.md](deployment.md).
 
 ## Invite the Bot to Your Server
 
-1. In the Developer Portal, go to "OAuth2" → "URL Generator"
-2. Select these scopes:
-   - `bot`
-3. Select these bot permissions:
-   - `Send Messages`
-   - `Read Messages/View Channels`
-4. Copy the generated URL and open it in your browser
-5. Select your server and authorize the bot
+Use the [WheelOfAdventOfCode](https://discord.com/oauth2/authorize?client_id=1449599807613173881&permissions=68608&integration_type=0&scope=bot) bot invitation link, select your server and authorize the bot
 
 ## Commands
 
