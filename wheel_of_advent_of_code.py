@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands, tasks
 import random
-from datetime import datetime, time
+from datetime import datetime, time, timedelta
 import os
 from dotenv import load_dotenv
 
@@ -58,11 +58,16 @@ async def spin_wheel(ctx):
 async def show_schedule(ctx):
     """Show when the next Friday announcement will happen."""
     if friday_announcement.is_running():
-        next_iteration = friday_announcement.next_iteration
-        if next_iteration:
-            await ctx.send(f"⏰ Next automatic announcement: {next_iteration.strftime('%Y-%m-%d %H:%M:%S %Z')}")
-        else:
-            await ctx.send("⏰ Scheduler is running and will post on Fridays at 10:00 AM UTC")
+        # Calculate next Friday
+        now = datetime.now()
+        days_until_friday = (4 - now.weekday()) % 7
+        if days_until_friday == 0 and now.hour >= 0:
+            # If it's Friday but already past midnight, get next Friday
+            days_until_friday = 7
+        next_friday = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        next_friday = next_friday + timedelta(days=days_until_friday)
+
+        await ctx.send(f"⏰ Next automatic announcement: {next_friday.strftime('%Y-%m-%d %H:%M:%S')} UTC (Friday)")
     else:
         await ctx.send("⚠️ The Friday scheduler is not currently running.")
 
