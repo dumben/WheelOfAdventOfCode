@@ -25,6 +25,16 @@ DAYS_PER_YEAR = {
     2025: 12,
 }
 
+# Suggested languages with weights
+CHALLENGE_LANGUAGE = {
+    "Python": 1.0,
+    "Ruby": 1.0,
+    "Java": 0.2,
+    "Scala": 0.1,
+    "SQL": 0.1
+}
+
+
 
 def get_days_for_year(year):
     """Get the number of available days for a given year."""
@@ -39,6 +49,13 @@ def get_random_challenge():
     return year, day
 
 
+def get_random_language():
+    """Select a random language based on weights."""
+    languages = list(CHALLENGE_LANGUAGE.keys())
+    weights = list(CHALLENGE_LANGUAGE.values())
+    return random.choices(languages, weights=weights, k=1)[0]
+
+
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
@@ -51,7 +68,12 @@ async def on_ready():
 async def spin_wheel(ctx):
     """Manually spin the wheel to get a random Advent of Code challenge."""
     year, day = get_random_challenge()
-    await ctx.send(f"🎄 **Let's do Year {year} Day {day}!** 🎄\nhttps://adventofcode.com/{year}/day/{day}")
+    language = get_random_language()
+    await ctx.send(
+        f"🎄 **Let's do Year {year} Day {day}!** 🎄\n"
+        f"💻 **Suggested Language: {language}** 💻\n"
+        f"https://adventofcode.com/{year}/day/{day}"
+    )
 
 
 @bot.command(name='schedule')

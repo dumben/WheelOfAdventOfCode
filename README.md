@@ -5,6 +5,7 @@ A Discord bot that randomly selects Advent of Code challenges and automatically 
 ## Features
 
 - 🎲 **Random Challenge Selection**: Picks a random year (2015-present) and day (1-25) from Advent of Code
+- 💻 **Suggested Language**: Randomly suggests a programming language (Python, Ruby, Java, Scala, or SQL) to add variety to your challenges
 - 📅 **Automatic Friday Posts**: Posts a new challenge every Friday at 12:00 AM UTC
 - 🎮 **Manual Spin**: Use the `aoc!spin` command to get a challenge anytime
 - ⏰ **Schedule Info**: Check when the next automatic post will happen with `aoc!schedule`
