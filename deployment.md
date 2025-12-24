@@ -39,19 +39,14 @@ On the droplet:
 ```bash
 cd /opt/adventbot
 apt update
-apt install -y python3 python3-pip python3-venv
+apt install -y python3
 
-# Create virtual environment
-python3 -m venv venv
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.cargo/env
 
-# Activate virtual environment
-source venv/bin/activate
-
-# Install dependencies in venv
-pip install -r requirements.txt
-
-# Deactivate venv (we'll use the full path in systemd)
-deactivate
+# Install dependencies
+uv sync
 ```
 
 ### 3. Configure the Bot Token
@@ -92,7 +87,7 @@ Type=simple
 User=root
 WorkingDirectory=/opt/adventbot
 EnvironmentFile=/opt/adventbot/.env
-ExecStart=/opt/adventbot/venv/bin/python wheel_of_advent_of_code.py
+ExecStart=/opt/adventbot/.venv/bin/python wheel_of_advent_of_code.py
 Restart=always
 RestartSec=10
 
@@ -164,10 +159,8 @@ cd /opt/adventbot
 # Pull the latest changes
 git pull origin main
 
-# If requirements.txt changed, update dependencies
-source venv/bin/activate
-pip install -r requirements.txt
-deactivate
+# If pyproject.toml changed, update dependencies
+uv sync
 
 # Restart the service
 systemctl restart adventbot
@@ -178,7 +171,7 @@ systemctl status adventbot
 
 Or as a one-liner from your local machine:
 ```bash
-ssh root@your-droplet-ip "cd /opt/adventbot && git pull origin main && systemctl restart adventbot"
+ssh root@your-droplet-ip "cd /opt/adventbot && git pull origin main && uv sync && systemctl restart adventbot"
 ```
 
 ## Troubleshooting
