@@ -244,7 +244,7 @@ async def weekly_announcement():
 
 
 @weekly_announcement.before_loop
-async def weekly_announcement():
+async def before_weekly_announcement():
     """Wait until the bot is ready before starting the loop."""
     await bot.wait_until_ready()
 
