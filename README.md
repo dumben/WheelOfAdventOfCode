@@ -10,13 +10,13 @@ A Discord bot that randomly selects Advent of Code challenges and automatically 
 - 🎮 **Manual Spin**: Use the `aoc!spin` command to get a challenge anytime
 - ⏰ **Schedule Info**: Check when the next automatic post will happen with `aoc!schedule`
 
-## Installation
-
-For full deployment instructions including systemd service setup, see [deployment.md](deployment.md).
-
 ## Invite the Bot to Your Server
 
-Use the [WheelOfAdventOfCode](https://discord.com/oauth2/authorize?client_id=1449599807613173881&permissions=68608&integration_type=0&scope=bot) bot invitation link, select your server and authorize the bot
+The bot is already running on my Digital Ocean Ubuntu droplet.
+
+Invite it to your Discord server with this [WheelOfAdventOfCode](https://discord.com/oauth2/authorize?client_id=1449599807613173881&permissions=68608&integration_type=0&scope=bot) bot invitation link, select your server and authorize the bot.
+
+But, if you really want to host your own instance of the bot, see [deployment.md](deployment.md)
 
 ## Commands
 
@@ -26,7 +26,6 @@ Use the [WheelOfAdventOfCode](https://discord.com/oauth2/authorize?client_id=144
   - Example: `aoc!setschedule friday 18` (Every Friday at 6:00 PM UTC)
   - Day: monday, tuesday, wednesday, thursday, friday, saturday, sunday
   - Hour: 0-23 (UTC timezone)
-  - Posts will be made at 1 minute past the specified hour
 
 ## License
 

@@ -1,6 +1,6 @@
 # Setup
 
-## (One time, done) Create a Discord Bot
+## Create a Discord Bot
 
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications)
 2. Click "New Application" and give it a name (e.g., "WheelOfAdventOfCode")
@@ -10,7 +10,7 @@
    - **Message Content Intent** (required for commands)
 6. Click "Reset Token" and copy your bot token
 
-## (One time, done) Create a Bot Invite Link
+## Create a Bot Invite Link
 
 1. In the Developer Portal, go to "OAuth2" → "URL Generator"
 2. Select the scope:
